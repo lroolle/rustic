@@ -188,12 +188,7 @@
       (rustic-test-babel-execute-block buf)
       (should (eq (rustic-test-babel-check-results buf) nil)))))
 
-(ert-deftest rustic-test-babel-ensure-main-wrap()
-  (let* ((string "let x = \"fn main(){}\";")
-         (buf (rustic-test-get-babel-block string)))
-    (with-current-buffer buf
-      (rustic-test-babel-execute-block buf)
-      (should (eq (rustic-test-babel-check-results buf) nil))))
+(ert-deftest rustic-test-babel-ensure-main-wrap-no()
   (let* ((string "let x = \"fn main(){}\";")
          (params ":main no")
          (buf (rustic-test-get-babel-block string params)))
@@ -214,7 +209,7 @@ let x = \"rustic\";
       (rustic-test-babel-execute-block buf)
       (should (eq (rustic-test-babel-check-results buf) nil)))))
 
-(ert-deftest rustic-test-babel-ensure-main-wrap-no()
+(ert-deftest rustic-test-babel-ensure-main-wrap-no-with-main()
   (let* ((string "
                 fn main() {
 let x = \"rustic\";
